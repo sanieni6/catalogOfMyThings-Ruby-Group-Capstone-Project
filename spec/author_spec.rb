@@ -15,10 +15,9 @@ describe Author do
   end
 
   it "Should recieve an element" do 
-    # game = Game.new 7, '2022/04/30'
-    game = double
-    # allow(game).to receive(Author)
+    game = Game.new 7, '2022/04/30'
     author.add_item(game)
-    expect(author.items).to be_instance_of(Array)
+    expect(author.items.length).to eql(1)
+    expect(author.items[0]).to be_instance_of(Game)
   end
 end
