@@ -14,6 +14,7 @@ attr_reader :music_albums
 
 def initialize
   @music_albums = []
+  @games = []
 end
 
   def run

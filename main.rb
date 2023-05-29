@@ -44,7 +44,7 @@ def options
     add_a_movie
     show_menu
   when 12
-    add_a_game
+    create_a_game
     
   end
 end
