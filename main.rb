@@ -10,28 +10,42 @@ def options
   case @number.to_i
   when 1
     list_all_books
+     show_menu
   when 2
     list_all_music_albums
+    show_menu
   when 3
     list_all_movies
+    show_menu
   when 4
     list_all_games
+    show_menu
   when 5
     list_all_genres
+    show_menu
   when 6
     list_all_labels
+    show_menu
+
   when 7
     list_all_authors
+    show_menu
+
   when 8
     list_all_sources
+    show_menu
   when 9
     add_a_book
+    show_menu
   when 10
     add_a_music_album
+    show_menu
   when 11
     add_a_movie
+    show_menu
   when 12
     add_a_game
+    
   end
 end
 
