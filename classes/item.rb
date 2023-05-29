@@ -1,5 +1,12 @@
 class Item
-  def initialize(date)
+  attr_accessor :genre, :author, :source, :label, :date
+  attr_reader :id
+  def initialize(genre, author, source, label, date)
+    @id = Random.rand(1..1000)
+    @genre = genre
+    @author = author
+    @source = source
+    @label = label
     @publish_date = Date._parse(date)
   end
 

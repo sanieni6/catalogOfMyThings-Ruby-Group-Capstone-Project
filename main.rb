@@ -38,7 +38,7 @@ def options
     add_a_book
     show_menu
   when 10
-    add_a_music_album
+    create_a_music_album
     show_menu
   when 11
     add_a_movie
