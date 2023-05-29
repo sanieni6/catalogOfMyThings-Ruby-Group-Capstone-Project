@@ -5,7 +5,6 @@ class Item
     @id = Random.rand(1..1000)
     @genre = nil
     @author = nil 
-    @source = nil 
     @label = nil
     @publish_date = Time.now
     @archived = false

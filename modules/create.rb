@@ -13,8 +13,6 @@ module Create
       genre.add_item(game)
       author = select_author
       author.add_item(game)
-      source = select_source
-      source.add_item(game)
       label = select_label
       label.add_item(game)
     end

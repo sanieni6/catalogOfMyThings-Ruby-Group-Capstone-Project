@@ -1,5 +1,5 @@
 require_relative './item'
-
+require 'date'
 class Game < Item
   def initialize(multiplayer, last_played_at) 
     super()
