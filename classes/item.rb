@@ -1,27 +1,20 @@
-class Item 
+class Item
   def initialize(date)
-    @id
-    @genre
-    @author
-    @source
-    @label
     @publish_date = Date._parse(date)
-    @archived
   end
-  
+
   def move_to_archive
-    if can_be_archived?
-      @archived = true
-    end
+    return unless can_be_archived?
+
+    @archived = true
   end
-  
+
   private
 
   def can_be_archived?
     current_year = Time.now.year
-    if current_year - @publish_date.year > 10
-      return true
-    end
+    return true if current_year - @publish_date.year > 10
+
     false
   end
 end
