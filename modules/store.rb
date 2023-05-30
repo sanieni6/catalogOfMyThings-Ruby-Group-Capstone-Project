@@ -52,6 +52,7 @@ module Store
     JSON.parse(File.read('data/genres.json')).each do |genre|
         @genres << Genre.new(genre['name'], genre['items']) #maybe a conflict with the items: returning memory address
     end
+  end
 
   def load_files
     load_albums
