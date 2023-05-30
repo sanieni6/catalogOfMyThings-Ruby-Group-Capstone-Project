@@ -23,7 +23,7 @@ module List
   def list_all_genres
     puts "There's no genres stored yet" if @genres.empty?
     @genres.each do |genre|
-      puts "Genre: #{genre.name}"
+      puts "id: #{genre.id} Genre: #{genre.name}"
     end
   end
 

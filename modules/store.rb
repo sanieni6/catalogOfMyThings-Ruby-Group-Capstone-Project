@@ -53,9 +53,10 @@ module Store
   end
 
   def load_genres
+    
     return unless File.exist?('data/genres.json')
-
     puts 'loading genres'
+    
     JSON.parse(File.read('data/genres.json')).each do |genre|
       genree = Genre.new(genre['name'])
       genree.add_id(genre['id'])
@@ -81,7 +82,7 @@ module Store
     load_albums
     load_books
     load_labels
-    # load_genres
+    load_genres
     load_authors
   end
 end
