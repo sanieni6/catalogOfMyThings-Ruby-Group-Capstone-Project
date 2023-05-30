@@ -14,7 +14,7 @@ module Create
     end
     print 'Enter the publish date: '
     date = gets.chomp
-    music_album = MusicAlbum.new spotify, date
+    music_album = MusicAlbum.new date, spotify
     genre = select_genre
     genre.add_item(music_album)
     author = select_author
@@ -84,7 +84,7 @@ module Create
       puts 'Invalid label ID. Please try again.'
       select_label
     else
-      selected_label
+      selected_label[0]
     end
   end
 end

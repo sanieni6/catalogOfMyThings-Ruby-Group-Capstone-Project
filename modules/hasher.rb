@@ -2,9 +2,11 @@ module Hasher
   def album_to_hash(album)
     {
       id: album.id,
-      genre: album.genre,
-      author: album.author,
-      label: album.label
+      on_spotify: album.on_spotify,
+      date: album.date,
+      genre: album.genre.id,
+      author: album.author.id,
+      label: album.label.id
     }
   end
 
@@ -27,7 +29,7 @@ module Hasher
     {
       id: genre.id,
       name: genre.name,
-      items: genre.items # maybe a conflict with the items: Storing  memory address
+      items: genre.items.map(&:id) # maybe a conflict with the items: Storing  memory address
     }
   end
 end

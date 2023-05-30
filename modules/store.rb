@@ -24,11 +24,31 @@ module Store
     save_genres
   end
 
+  def get_genre_by_id(id)
+    @genres.find { |genre| genre.id == id }
+  end
+
+  def get_author_by_id(id)
+    @authors.find { |author| author.id == id }
+  end
+
+  def get_label_by_id(id)
+    @labels.find { |label| label.id == id }
+  end
+
   def load_albums
     return unless File.exist?('data/albums.json') && File.size?('data/albums.json')
 
     JSON.parse(File.read('data/albums.json')).each do |album|
-      @music_albums << MusicAlbum.new(album['on_spotify'], album['genre'], album['author'], album['label'])
+      genre = get_genre_by_id(album['genre'])
+      author = get_author_by_id(album['author'])
+      label = get_label_by_id(album['label'])
+      current_album = MusicAlbum.new(album['on_spotify'], album['date'])
+      genre.add_item(current_album)
+      author.add_item(current_album)
+      label.add_item(current_album)
+      @music_albums << current_album
+      #@music_albums << MusicAlbum.new(album['on_spotify'], album['genre'], album['author'], album['label'])
     end
   end
 
@@ -79,10 +99,10 @@ module Store
   end
 
   def load_files
-    load_albums
-    load_books
     load_labels
     load_genres
     load_authors
+    load_albums
+    load_books
   end
 end
