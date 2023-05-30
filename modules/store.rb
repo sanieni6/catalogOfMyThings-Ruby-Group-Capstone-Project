@@ -13,6 +13,9 @@ module Store
     File.write('data/labels.json', JSON.pretty_generate(@labels.map { |label| label_to_hash(label) }))
   end
 
+  def save_genres
+    File.write('data/genres.json', @genres.map { |genre| genre_to_hash genre }.to_json)
+
   def save_files
     save_albums
     save_books
@@ -23,7 +26,7 @@ module Store
     return unless File.exist?('data/albums.json') && File.size?('data/albums.json')
 
     JSON.parse(File.read('data/albums.json')).each do |album|
-      @music_albums << MusicAlbum.new(album['genre'], album['author'])
+      @music_albums << MusicAlbum.new(album['on_spotify'], album['genre'], album['author'], album['label'])
     end
   end
 
@@ -42,6 +45,13 @@ module Store
     label_data = JSON.parse(file)
     @labels = label_data.map { |label| Label.new(label['title'], label['color']) }
   end
+
+  def load_genres
+    return unless File.exist?('data/genres.json')
+
+    JSON.parse(File.read('data/genres.json')).each do |genre|
+        @genres << Genre.new(genre['name'], genre['items']) #maybe a conflict with the items: returning memory address
+    end
 
   def load_files
     load_albums
