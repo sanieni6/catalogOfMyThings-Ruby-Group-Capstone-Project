@@ -33,4 +33,11 @@ module List
       puts "Id: #{author.id} Name: #{author.first_name} #{author.last_name}"
     end
   end
+
+  def list_all_games
+    puts "There're no games stored yet" if @games.empty?
+    @games.each do |game|
+      puts "Id: #{game.id} Multiplayer: #{game.multiplayer}"
+    end
+  end
 end

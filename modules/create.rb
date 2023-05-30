@@ -33,10 +33,11 @@ module Create
     game = Game.new multiplayer, last_played_at
     author = select_author
     author.add_item(game)
-    # genre = select_genre
-    # genre.add_item(game)
-    # label = select_label
-    # label.add_item(game)
+    genre = select_genre
+    genre.add_item(game)
+    label = select_label
+    label.add_item(game)
+    @games << game
   end
 
   def add_a_book
