@@ -1,5 +1,25 @@
 module Create
-  def create_a_music_album; end
+  def create_a_music_album
+    print 'It is on spotify [y/n]: '
+    spotify = gets.chomp
+    case spotify
+    when 'y' || 'Y'
+      spotify = true
+    when 'n' || 'N'
+      spotify = false
+    else
+      puts 'invalid input, please try again'
+      create_a_music_album
+    end
+    music_album = MusicAlbum.new spotify
+    genre = select_genre
+    genre.add_item(music_album)
+    author = select_author
+    author.add_item(music_album)
+    label = select_label
+    label.add_item(music_album)
+    @music_albums << music_album
+  end
 
   def create_a_game
     print 'Enter the number of players: '
