@@ -14,9 +14,9 @@ module List
   end
 
   def list_all_labels
-    puts "There's no labels stored yet" if @labels.empty?
+    puts 'There are no labels stored yet.' if @labels.empty?
     @labels.each do |label|
-      puts "Title: #{label.title}, Color: #{label.color}"
+      puts "Id: #{label.id} Title: #{label.title}, Color: #{label.color}"
     end
   end
 
