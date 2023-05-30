@@ -67,10 +67,20 @@ module Store
     end
   end
 
+  def load_authors 
+    puts 'Loading authors'
+    authors = JSON.parse(File.read('./data/authors.json'))["authors"]
+    authors.each do |author|
+      author = Author.new author["first_name"], author["last_name"]
+      @authors << author
+    end
+  end 
+
   def load_files
     load_albums
     load_books
     load_labels
-    load_genres
+    # load_genres
+    load_authors
   end
 end
