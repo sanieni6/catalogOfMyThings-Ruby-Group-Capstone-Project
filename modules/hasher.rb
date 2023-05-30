@@ -1,5 +1,5 @@
 require 'date'
-
+require 'pry'
 module Hasher
   def album_to_hash(album)
     {
@@ -36,12 +36,17 @@ module Hasher
   end
 
   def game_to_hash(game)
+    # binding.pry
     {
       multiplayer: game.multiplayer,
-      last_played_at: game.last_played_at.to_s,
+      last_played_at: date_to_string(game.last_played_at),
       author: game.author.id,
-      label: game.author.id,
+      label: game.label.id,
       genre: game.genre.id
     }
+  end
+
+  def date_to_string(date)
+    "#{date[:year]}/#{date[:mon]}/#{date[:mday]}"
   end
 end
