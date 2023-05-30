@@ -12,4 +12,11 @@ module List
       puts "Title: #{book.title}, Author: #{book.author} Published by: #{book.publisher}"
     end
   end
+
+  def list_all_labels
+    puts "There's no labels stored yet" if @labels.empty?
+    @labels.each do |label|
+      puts "Title: #{label.title}, Color: #{label.color}"
+    end
+  end
 end

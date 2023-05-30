@@ -12,7 +12,7 @@ class App
   include List
   include Store
   include Hasher
-  attr_reader :music_albums, :books
+  attr_reader :music_albums, :books, :labels
 
   def initialize
     @music_albums = []

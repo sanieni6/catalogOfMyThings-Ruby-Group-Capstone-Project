@@ -15,4 +15,11 @@ module Hasher
       cover_state: book.cover_state
     }
   end
+
+  def label_to_hash(label)
+    {
+      title: label.title,
+      color: label.color
+    }
+  end
 end
