@@ -17,11 +17,16 @@ module Store
     File.write('data/genres.json', @genres.map { |genre| genre_to_hash genre }.to_json)
   end
 
+  def save_games 
+    File.write('data/games.json', @games.map {|game| game_to_hash game}.to_json)
+  end
+
   def save_files
     save_albums
     save_books
     save_labels
     save_genres
+    save_games
   end
 
   def get_genre_by_id(id)
@@ -102,7 +107,7 @@ module Store
     load_labels
     load_genres
     load_authors
-    load_albums
+    # load_albums
     load_books
   end
 end

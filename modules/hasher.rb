@@ -1,3 +1,5 @@
+require 'date'
+
 module Hasher
   def album_to_hash(album)
     {
@@ -30,6 +32,16 @@ module Hasher
       id: genre.id,
       name: genre.name,
       items: genre.items.map(&:id) # maybe a conflict with the items: Storing  memory address
+    }
+  end
+
+  def game_to_hash(game)
+    {
+      multiplayer: game.multiplayer, 
+      last_played_at: game.last_played_at.to_s, 
+      author: game.author.id, 
+      label: game.author.id, 
+      genre: game.genre.id
     }
   end
 end
