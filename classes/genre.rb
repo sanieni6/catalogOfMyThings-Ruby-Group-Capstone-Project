@@ -9,4 +9,8 @@ class Genre
     @items.push(item)
     item.genre = self
   end
+
+  def add_id(id)
+    @id = id
+  end
 end

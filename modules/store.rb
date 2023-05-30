@@ -21,6 +21,7 @@ module Store
     save_albums
     save_books
     save_labels
+    save_genres
   end
 
   def load_albums
@@ -47,11 +48,22 @@ module Store
     @labels = label_data.map { |label| Label.new(label['title'], label['color']) }
   end
 
+  def get_item_by_id(id)
+    @music_albums.find { |album| album.id == id }
+    end
+
   def load_genres
     return unless File.exist?('data/genres.json')
-
+    puts 'loading genres'
     JSON.parse(File.read('data/genres.json')).each do |genre|
-      @genres << Genre.new(genre['name'], genre['items']) # maybe a conflict with the items: returning memory address
+        genree = Genre.new(genre['name'])
+        genree.add_id(genre['id'])
+        if genre['items'].nil? && @music_albums.any?
+            genre['items'].each do |item|
+                genree.add_item(get_item_by_id(item))
+            end
+        end
+      @genres << genree
     end
   end
 
@@ -59,5 +71,6 @@ module Store
     load_albums
     load_books
     load_labels
+    load_genres
   end
 end
