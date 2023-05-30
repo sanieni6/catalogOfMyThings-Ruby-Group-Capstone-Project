@@ -50,20 +50,30 @@ module Store
 
   def get_item_by_id(id)
     @music_albums.find { |album| album.id == id }
-    end
+  end
 
   def load_genres
     return unless File.exist?('data/genres.json')
+
     puts 'loading genres'
     JSON.parse(File.read('data/genres.json')).each do |genre|
-        genree = Genre.new(genre['name'])
-        genree.add_id(genre['id'])
-        if genre['items'].nil? && @music_albums.any?
-            genre['items'].each do |item|
-                genree.add_item(get_item_by_id(item))
-            end
+      genree = Genre.new(genre['name'])
+      genree.add_id(genre['id'])
+      if genre['items'].nil? && @music_albums.any?
+        genre['items'].each do |item|
+          genree.add_item(get_item_by_id(item))
         end
+      end
       @genres << genree
+    end
+  end
+
+  def load_authors
+    puts 'Loading authors'
+    authors = JSON.parse(File.read('./data/authors.json'))['authors']
+    authors.each do |author|
+      author = Author.new author['first_name'], author['last_name']
+      @authors << author
     end
   end
 
@@ -71,6 +81,7 @@ module Store
     load_albums
     load_books
     load_labels
-    load_genres
+    # load_genres
+    load_authors
   end
 end

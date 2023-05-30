@@ -26,4 +26,11 @@ module List
       puts "Genre: #{genre.name}"
     end
   end
+
+  def list_all_authors
+    puts "There's no genres stored yet" if @authors.empty?
+    @authors.each do |author|
+      puts "Id: #{author.id} Name: #{author.first_name} #{author.last_name}"
+    end
+  end
 end
