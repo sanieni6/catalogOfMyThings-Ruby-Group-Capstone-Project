@@ -26,8 +26,8 @@ class App
 
   def run
     load_files
-    show_menu
+    menu = Menu.new(self)
+    menu.display_menu
     save_files
-    puts 'Thank you for using this app!' if @number.to_i.zero?
   end
 end

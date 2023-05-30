@@ -1,24 +1,12 @@
 class Menu
   def initialize(app)
     @app = app
-    @menu = build_menu
-    @menu_actions = build_menu_actions
+    initialize_menu
+    initialize_menu_actions
   end
 
-  def display_menu
-    puts "\nPlease choose an option by entering a number:"
-
-    @menu.each do |key, value|
-      puts "#{key} - #{value}"
-    end
-
-    validate_option
-  end
-
-  private
-
-  def build_menu
-    {
+  def initialize_menu
+    @menu = {
       1 => 'List all books',
       2 => 'List all music albums',
       3 => 'List all games',
@@ -32,8 +20,8 @@ class Menu
     }
   end
 
-  def build_menu_actions
-    {
+  def initialize_menu_actions
+    @menu_actions = {
       1 => :list_all_books,
       2 => :list_all_music_albums,
       3 => :list_all_games,
@@ -47,14 +35,25 @@ class Menu
     }
   end
 
+  def display_menu
+    puts "\nSelect an option by entering a number:"
+    @menu.each do |key, value|
+      puts "#{key} - #{value}"
+    end
+    validate_option
+  end
+
   def validate_option
     option = gets.chomp.to_i
     action = @menu_actions[option]
 
-    if action
+    if action == :exit
+      puts 'Thank you for using this app!'
+    elsif action
       @app.send(action)
+      display_menu
     else
-      puts 'Select a valid option (between 0 and 9)'
+      puts 'Select a valid option'
       display_menu
     end
   end
