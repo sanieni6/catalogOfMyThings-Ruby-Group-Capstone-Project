@@ -17,8 +17,8 @@ module Store
     File.write('data/genres.json', @genres.map { |genre| genre_to_hash genre }.to_json)
   end
 
-  def save_games 
-    File.write('data/games.json', @games.map {|game| game_to_hash game}.to_json)
+  def save_games
+    File.write('data/games.json', @games.map { |game| game_to_hash game }.to_json)
   end
 
   def save_files
@@ -53,7 +53,7 @@ module Store
       author.add_item(current_album)
       label.add_item(current_album)
       @music_albums << current_album
-      #@music_albums << MusicAlbum.new(album['on_spotify'], album['genre'], album['author'], album['label'])
+      # @music_albums << MusicAlbum.new(album['on_spotify'], album['genre'], album['author'], album['label'])
     end
   end
 
@@ -78,10 +78,10 @@ module Store
   end
 
   def load_genres
-    
     return unless File.exist?('data/genres.json')
+
     puts 'loading genres'
-    
+
     JSON.parse(File.read('data/genres.json')).each do |genre|
       genree = Genre.new(genre['name'])
       genree.add_id(genre['id'])
