@@ -22,4 +22,12 @@ module Hasher
       color: label.color
     }
   end
+
+  def genre_to_hash(genre)
+    {
+      id: genre.id,
+      name: genre.name,
+      items: genre.items # maybe a conflict with the items: Storing  memory address
+    }
+  end
 end
