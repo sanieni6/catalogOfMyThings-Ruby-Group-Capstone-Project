@@ -9,7 +9,7 @@ module List
   def list_all_books
     puts "There's no books stored yet" if @books.empty?
     @books.each do |book|
-      puts "Title: #{book.title}, Author: #{book.author}"
+      puts "Title: #{book.title}, Author: #{book.author} Published by: #{book.publisher}"
     end
   end
 end
