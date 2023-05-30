@@ -1,5 +1,5 @@
 require 'json'
-
+require 'pry'
 module Store
   def save_albums
     File.write('data/albums.json', @music_albums.map { |album| album_to_hash album }.to_json)
@@ -18,7 +18,7 @@ module Store
   end
 
   def save_games
-    File.write('data/games.json', @games.map { |game| game_to_hash game }.to_json)
+    File.write('data/games.json', @games.map { |game| game_to_hash game }.to_json) unless @games.empty?
   end
 
   def save_files
@@ -94,6 +94,20 @@ module Store
     end
   end
 
+  def load_games
+    puts 'loading games'
+    return unless File.exist?('./data/games.json')
+
+    games = JSON.parse(File.read('./data/games.json'))
+    games.each do |game|
+      loaded_game = Game.new game['multiplayer'], game['last_played_at']
+      loaded_game.author = @authors[0]
+      loaded_game.label = @labels[0]
+      loaded_game.genre = @genres[0]
+      @games.push(loaded_game)
+    end
+  end
+
   def load_authors
     puts 'Loading authors'
     authors = JSON.parse(File.read('./data/authors.json'))['authors']
@@ -109,5 +123,6 @@ module Store
     load_authors
     # load_albums
     load_books
+    load_games
   end
 end
