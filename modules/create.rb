@@ -12,7 +12,9 @@ module Create
       puts 'invalid input, please try again'
       create_a_music_album
     end
-    music_album = MusicAlbum.new spotify
+    print 'Enter the publish date: '
+    date = gets.chomp
+    music_album = MusicAlbum.new spotify, date
     genre = select_genre
     genre.add_item(music_album)
     author = select_author
@@ -20,6 +22,7 @@ module Create
     label = select_label
     label.add_item(music_album)
     @music_albums << music_album
+    puts 'Music Album created successfully'
   end
 
   def create_a_game
@@ -52,7 +55,12 @@ module Create
     puts 'Book created successfully'
   end
 
-  def select_genre; end
+  def select_genre
+    print 'Select a genre using the id: '
+    list_all_genres
+    id = gets.chomp.to_i
+     @genres.find {|genre| genre.id === id}
+   end
 
   def select_author
     print 'Select an option using the id: '
