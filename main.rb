@@ -10,7 +10,7 @@ def options
   case @number.to_i
   when 1
     list_all_books
-     show_menu
+    show_menu
   when 2
     list_all_music_albums
     show_menu
@@ -45,7 +45,7 @@ def options
     show_menu
   when 12
     create_a_game
-    
+
   end
 end
 
