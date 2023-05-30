@@ -16,6 +16,7 @@ module Store
   def save_files
     save_albums
     save_books
+    save_labels
   end
 
   def load_albums
