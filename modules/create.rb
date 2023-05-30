@@ -1,3 +1,4 @@
+require 'pry'
 module Create
   def create_a_music_album
     print 'It is on spotify [y/n]: '
@@ -27,12 +28,12 @@ module Create
     print 'Enter the last time you played this game: '
     last_played_at = gets.chomp
     game = Game.new multiplayer, last_played_at
-    genre = select_genre
-    genre.add_item(game)
     author = select_author
     author.add_item(game)
-    label = select_label
-    label.add_item(game)
+    # genre = select_genre
+    # genre.add_item(game)
+    # label = select_label
+    # label.add_item(game)
   end
 
   def add_a_book
@@ -53,7 +54,15 @@ module Create
 
   def select_genre; end
 
-  def select_author; end
+  def select_author
+    print 'Select an option using the id: '
+    list_all_authors
+    id = gets.chomp.to_i
+    filtered = @authors.select {|author| author.id === id}
+    filtered[0]
+
+    # binding.pry
+  end
 
   def select_label; end
 end
