@@ -82,7 +82,7 @@ module Store
       aux_label.add_id(label['id'])
       if label['items'].nil? && @labels.any?
         label['items'].each do |item|
-          aux_label.add_item(get_label_by_id(item))
+          aux_label.add_item(get_labels_by_id(item))
         end
       end
       @labels << aux_label
@@ -93,8 +93,8 @@ module Store
     @music_albums.find { |album| album.id == id }
   end
 
-  def get_label_by_id(id)
-    @books.find { |album| book.id == id }
+  def get_labels_by_id(id)
+    @books.find { |_album| book.id == id }
   end
 
   def load_genres
