@@ -45,9 +45,9 @@ module Create
     publisher = gets.chomp
     print 'Enter the cover state of the book: '
     cover_state = gets.chomp
-    book = Book.new(publisher, cover_state)
-    # genre = select_genre
-    # genre.add_item(book)
+    book = Book.new publisher, cover_state
+    genre = select_genre
+    genre.add_item(book)
     author = select_author
     author.add_item(book)
     label = select_label
@@ -60,7 +60,7 @@ module Create
     print 'Select a genre using the id: '
     list_all_genres
     id = gets.chomp.to_i
-    @genres.find { |genre| genre.id === id }
+    @genres.find { |genre| genre.id == id }
   end
 
   def select_author

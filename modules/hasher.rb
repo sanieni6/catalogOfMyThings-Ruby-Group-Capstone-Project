@@ -16,7 +16,10 @@ module Hasher
     {
       id: book.id,
       publisher: book.publisher,
-      cover_state: book.cover_state
+      cover_state: book.cover_state,
+      genre: book.genre.id,
+      author: book.author.id,
+      label: book.label.id
     }
   end
 
