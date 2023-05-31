@@ -1,7 +1,7 @@
 require_relative '../classes/item'
 
 describe Item do
-  let(:item) { Item.new }
+  let(:item) { Item.new '2020/04/29' }
   it 'Should create an instance of Item' do
     expect(item).to be_instance_of(Item)
   end
