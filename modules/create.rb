@@ -2,18 +2,10 @@ module Create
   def create_a_music_album
     print 'It is on spotify [y/n]: '
     spotify = gets.chomp
-    case spotify
-    when 'y' || 'Y'
-      spotify = true
-    when 'n' || 'N'
-      spotify = false
-    else
-      puts 'invalid input, please try again'
-      create_a_music_album
-    end
+    spotify_value = spotify_cases spotify
     print 'Enter the publish date: '
     date = gets.chomp
-    music_album = MusicAlbum.new date, spotify
+    music_album = MusicAlbum.new date, spotify_value
     genre = select_genre
     genre.add_item(music_album)
     author = select_author
@@ -22,6 +14,18 @@ module Create
     label.add_item(music_album)
     @music_albums << music_album
     puts 'Music Album created successfully'
+  end
+
+  def spotify_cases(spotify)
+    case spotify
+    when 'y' || 'Y'
+      true
+    when 'n' || 'N'
+      false
+    else
+      puts 'invalid input, please try again'
+      create_a_music_album
+    end
   end
 
   def create_a_game
