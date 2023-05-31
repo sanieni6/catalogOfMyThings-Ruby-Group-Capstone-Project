@@ -6,11 +6,11 @@ module Store
   end
 
   def save_books
-    File.write('data/books.json', JSON.pretty_generate(@books.map { |book| book_to_hash(book) }))
+    File.write('data/books.json', @books.map { |book| book_to_hash book }.to_json)
   end
 
   def save_labels
-    File.write('data/labels.json', JSON.pretty_generate(@labels.map { |label| label_to_hash(label) }))
+    File.write('data/labels.json', @labels.map { |label| label_to_hash label }.to_json)
   end
 
   def save_genres
@@ -62,7 +62,16 @@ module Store
 
     file = File.read('data/books.json')
     book_data = JSON.parse(file)
-    @books = book_data.map { |book| Book.new(book['title'], book['author'], book['publisher']) }
+    book_data.each do |book|
+      genre = get_genre_by_id(book['genre'])
+      author = get_author_by_id(book['author'])
+      label = get_label_by_id(book['label'])
+      current_book = Book.new book['publisher'], book['cover_state']
+      current_book.author = @authors[0]
+      current_book.label = @labels[0]
+      current_book.genre = @genres[0]
+      @books.push(current_book)
+    end
   end
 
   def load_labels
