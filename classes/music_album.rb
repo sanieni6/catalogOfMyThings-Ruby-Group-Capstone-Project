@@ -5,6 +5,11 @@ class MusicAlbum < Item
   def initialize(date, on_spotify)
     super(date)
     @on_spotify = on_spotify
+    @date = date
+  end
+
+  def add_id(id)
+    @id = id
   end
 
   private

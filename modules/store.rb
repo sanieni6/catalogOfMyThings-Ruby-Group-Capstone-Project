@@ -43,7 +43,8 @@ module Store
       genre = get_genre_by_id(album['genre'])
       author = get_author_by_id(album['author'])
       label = get_label_by_id(album['label'])
-      current_album = MusicAlbum.new(album['on_spotify'], album['date'])
+      current_album = MusicAlbum.new(album['date'], album['on_spotify'])
+      current_album.add_id(album['id'])
       genre.add_item(current_album)
       author.add_item(current_album)
       label.add_item(current_album)
@@ -80,11 +81,11 @@ module Store
     JSON.parse(File.read('data/genres.json')).each do |genre|
       genree = Genre.new(genre['name'])
       genree.add_id(genre['id'])
-      if genre['items'].nil? && @music_albums.any?
-        genre['items'].each do |item|
-          genree.add_item(get_item_by_id(item))
-        end
-      end
+      #if genre['items'].nil? && @music_albums.any?
+       # genre['items'].each do |item|
+        #  genree.add_item(get_item_by_id(item))
+        #end
+      #end
       @genres << genree
     end
   end
