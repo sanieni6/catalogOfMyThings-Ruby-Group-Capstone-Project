@@ -25,8 +25,10 @@ module Hasher
 
   def label_to_hash(label)
     {
+      id: label.id,
       title: label.title,
-      color: label.color
+      color: label.color,
+      items: label.items.map(&:id)
     }
   end
 

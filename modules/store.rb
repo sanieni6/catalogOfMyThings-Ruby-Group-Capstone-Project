@@ -63,9 +63,6 @@ module Store
     file = File.read('data/books.json')
     book_data = JSON.parse(file)
     book_data.each do |book|
-      genre = get_genre_by_id(book['genre'])
-      author = get_author_by_id(book['author'])
-      label = get_label_by_id(book['label'])
       current_book = Book.new book['publisher'], book['cover_state']
       current_book.author = @authors[0]
       current_book.label = @labels[0]
@@ -77,13 +74,27 @@ module Store
   def load_labels
     return unless File.exist?('data/labels.json')
 
+    puts 'Loading Labels'
     file = File.read('data/labels.json')
     label_data = JSON.parse(file)
-    @labels = label_data.map { |label| Label.new(label['title'], label['color']) }
+    label_data.each do |label|
+      aux_label = Label.new label['title'], label['color']
+      aux_label.add_id(label['id'])
+      if label['items'].nil? && @labels.any?
+        label['items'].each do |item|
+          aux_label.add_item(get_label_by_id(item))
+        end
+      end
+      @labels << aux_label
+    end
   end
 
   def get_item_by_id(id)
     @music_albums.find { |album| album.id == id }
+  end
+
+  def get_label_by_id(id)
+    @books.find { |album| book.id == id }
   end
 
   def load_genres
