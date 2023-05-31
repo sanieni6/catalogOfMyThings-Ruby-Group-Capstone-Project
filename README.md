@@ -22,6 +22,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
+- [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
@@ -73,6 +74,11 @@ This is an easy-to-use solution to keep a record of different types of things yo
 - **[Console App]**
 
 <p align="right"><a href="#readme-top">Back to top</a></p>
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+### Video Demo Link <a name="live-demo-link"></a>
+> [Video Demo Link](https://drive.google.com/file/d/1rmmxpB8tyNlknaCQtpGsmFpPUFTgmKie/view?usp=sharing)
 
 <!-- GETTING STARTED -->
 
