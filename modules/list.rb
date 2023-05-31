@@ -2,7 +2,8 @@ module List
   def list_all_music_albums
     puts 'No music albums yet, please create an album first' if @music_albums.empty?
     @music_albums.each do |album|
-      puts "genre: #{album.genre.name},  author: #{album.author.first_name}, Available on spotify:#{album.on_spotify} "
+      puts "genre: #{album.genre.name},  author: #{album.author.first_name},
+      Available on spotify: #{album.on_spotify}, publish date: #{album.publish_date} "
     end
   end
 

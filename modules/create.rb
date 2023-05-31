@@ -1,4 +1,3 @@
-require 'pry'
 module Create
   def create_a_music_album
     print 'It is on spotify [y/n]: '
@@ -38,6 +37,7 @@ module Create
     label = select_label
     label.add_item(game)
     @games << game
+    puts 'Game created successfully'
   end
 
   def add_a_book
@@ -69,8 +69,6 @@ module Create
     id = gets.chomp.to_i
     filtered = @authors.select { |author| author.id == id }
     filtered[0]
-
-    # binding.pry
   end
 
   def select_label
