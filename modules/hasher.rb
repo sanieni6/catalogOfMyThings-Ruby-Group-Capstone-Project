@@ -1,3 +1,5 @@
+require 'date'
+require 'pry'
 module Hasher
   def album_to_hash(album)
     {
@@ -14,14 +16,19 @@ module Hasher
     {
       id: book.id,
       publisher: book.publisher,
-      cover_state: book.cover_state
+      cover_state: book.cover_state,
+      genre: book.genre.id,
+      author: book.author.id,
+      label: book.label.id
     }
   end
 
   def label_to_hash(label)
     {
+      id: label.id,
       title: label.title,
-      color: label.color
+      color: label.color,
+      items: label.items.map(&:id)
     }
   end
 
@@ -31,5 +38,20 @@ module Hasher
       name: genre.name,
       items: genre.items.map(&:id) # maybe a conflict with the items: Storing  memory address
     }
+  end
+
+  def game_to_hash(game)
+    # binding.pry
+    {
+      multiplayer: game.multiplayer,
+      last_played_at: date_to_string(game.last_played_at),
+      author: game.author.id,
+      label: game.label.id,
+      genre: game.genre.id
+    }
+  end
+
+  def date_to_string(date)
+    "#{date[:year]}/#{date[:mon]}/#{date[:mday]}"
   end
 end

@@ -9,7 +9,7 @@ module List
   def list_all_books
     puts "There's no books stored yet" if @books.empty?
     @books.each do |book|
-      puts "Title: #{book.title}, Author: #{book.author} Published by: #{book.publisher}"
+      puts "Id: #{book.id}, Published by: #{book.publisher}, Cover state: #{book.cover_state}"
     end
   end
 
@@ -31,6 +31,13 @@ module List
     puts "There's no genres stored yet" if @authors.empty?
     @authors.each do |author|
       puts "Id: #{author.id} Name: #{author.first_name} #{author.last_name}"
+    end
+  end
+
+  def list_all_games
+    puts "There're no games stored yet" if @games.empty?
+    @games.each do |game|
+      puts "Id: #{game.id} Multiplayer: #{game.multiplayer}"
     end
   end
 end

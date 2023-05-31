@@ -31,10 +31,11 @@ GEM
 
 PLATFORMS
   x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   pry
   rubocop (~> 1.51)
 
 BUNDLED WITH
-   2.4.12
+   2.4.13
