@@ -7,6 +7,8 @@ require_relative './modules/hasher'
 require_relative './classes/game'
 require_relative './classes/book'
 require_relative './classes/label'
+require_relative './classes/genre'
+require_relative './classes/author'
 
 class App
   include Create
