@@ -98,7 +98,7 @@ Clone this repository to your desired folder:
 To run the project, execute the following command:
 
 ```sh
-  main.rb
+  ruby main.rb
 ```
 
 ## 👥 Authors <a name="authors"></a>
