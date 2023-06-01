@@ -78,7 +78,7 @@ This is an easy-to-use solution to keep a record of different types of things yo
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 ### Video Demo Link <a name="live-demo-link"></a>
-> [Video Demo Link](https://drive.google.com/file/d/1rmmxpB8tyNlknaCQtpGsmFpPUFTgmKie/view?usp=sharing)
+> [Video Demo Link](https://drive.google.com/file/d/1m6_oN1Z7LBRnxMa_4IQZ7Zdopr80ogWX/view?usp=sharing)
 
 <!-- GETTING STARTED -->
 
